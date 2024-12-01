@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxapp/screens/home_screen.dart';
+import 'package:getxapp/navigation/navbar.dart';
 import 'package:getxapp/theme/theme.dart'; // Replace with your actual HomeScreen import
 
 class LoginController extends GetxController {
@@ -11,7 +11,7 @@ class LoginController extends GetxController {
     print('Email: ${email.value}, Password: ${password.value}');
 
     if (email.value == 'admin' && password.value == 'admin') {
-      Get.off(() => const HomeScreen());
+      Get.off(() => NavBar());
     } else {
       Get.snackbar(
         'Error',

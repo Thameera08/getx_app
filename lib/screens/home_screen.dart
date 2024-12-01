@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:getxapp/components/categorycard.dart';
 import 'package:getxapp/components/productcard.dart';
 import 'package:getxapp/theme/theme.dart';
 
@@ -18,13 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primary1,
         title: const Text(
-          'Home',
+          'Welcome to our Shop One ',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontSize: 28,
+            fontWeight: FontWeight.w600,
+            color: AppColors.white,
           ),
         ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -32,18 +34,40 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Text(
-                  'Welcome to our store',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w600,
+              SearchBar(
+                // Add a search bar
+                hintText: 'Search for products',
+              ),
+              SizedBox(height: 20),
+              const Text(
+                'Products Categories',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height *
+                    0.1, // Adjust height as needed
+                child: GridView.builder(
+                  scrollDirection: Axis.horizontal, // Horizontal scrolling
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1, // Number of rows
+                    crossAxisSpacing: 10.0, // Space between columns
+                    mainAxisSpacing: 10.0, // Space between rows
                   ),
+                  itemCount: 10, // Number of items
+                  itemBuilder: (context, index) {
+                    return Categorycard(
+                      title: 'Product $index',
+                      imageUrl: const AssetImage('lib/images/test.png'),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Products',
+                'Avilable Products',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -51,15 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.63,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 10.0,
-                    childAspectRatio: 0.6,
+                    childAspectRatio: 0.7,
                   ),
-                  itemCount: 4,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
                     return ProductCard(
                       title: 'Product $index',

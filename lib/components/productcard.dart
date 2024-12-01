@@ -35,8 +35,7 @@ class ProductCard extends StatelessWidget {
           children: [
             Image(
               image: imageUrl,
-              width: double.infinity,
-              fit: BoxFit.cover,
+              width: 150,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
